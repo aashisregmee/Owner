@@ -14,45 +14,51 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: kPrimaryColor,
+      backgroundColor: kPrimaryColor,
       body: Center(
         child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset("assets/images/logo.png",width: MediaQuery.of(context).size.width*.5,),
-                  const SizedBox(height: 20,),
-                  InputField("Username", controller: controller.usernameController, textInputAction: TextInputAction.next,),
-                  const SizedBox(height: 10,),
-                  PasswordField("Password", controller: controller.passwordController),
-                  const SizedBox(height: 20,),
-                 Obx(
-                    () => controller.isLoading.isTrue? CircularProgressIndicator(): PrimaryButton(text: "Login", onPress:(){
-                                 controller.login();
-                   } ),
-                 ),
-                 const SizedBox(height: 5,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Forgot Password?"),
-                      SizedBox(width: 5),
-                      Text(
-                        "SignUp",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/logo.png",
+                  width: MediaQuery.of(context).size.width * .5,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                InputField(
+                  "Username",
+                  controller: controller.usernameController,
+                  textInputAction: TextInputAction.next,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                PasswordField("Password",
+                    controller: controller.passwordController),
+                const SizedBox(
+                  height: 20,
+                ),
+                Obx(
+                  () => controller.isLoading.isTrue
+                      ? CircularProgressIndicator()
+                      : PrimaryButton(
+                          text: "Login",
+                          onPress: () {
+                            controller.login();
+                          }),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+              ],
             ),
           ),
+        ),
       ),
     );
   }
